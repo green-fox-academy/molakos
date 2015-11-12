@@ -1,0 +1,39 @@
+body {
+  background-color: #444;
+  color: #333;
+  font-family: 'Josefin Sans';
+  line-height: 1.5;
+  margin: 0;
+}
+
+h1 {
+  font-family: 'Playfair Display';
+  text-align: left;
+
+}
+
+.wrap {
+  margin: 0 auto;
+  max-width: 70%;
+  background-color: white;
+  padding: 20px;
+}
+
+header {
+  background-image: url("../img/fa.jpg");
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  position: relative;
+  padding-top: 300px;
+  padding-left: 40px;
+  color: white;
+  height: 400px;
+
+}
+
+blockquote {
+  background-color: #444;
+  color: white;
+  font-size: 400%;
+}
