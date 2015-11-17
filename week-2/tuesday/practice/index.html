@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Form practice</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Form probe</h1>
+    <form action="index.html">
+      <p>
+        <label for="valami">Ird ide a valamit*</label>
+        <input type="text" required id="valami" placeholder="ide">
+      </p>
+
+      <p>
+        <label for="jelszo">type="password"</label>
+        <input type="password" id="jelszo">
+      </p>
+
+      <p>
+        <label for="emailcim">type="email"</label>
+        <input type="email" id="emailcim">
+      </p>
+
+      <p>
+        <label for="webcim">type="url"</label>
+        <input type="url" id="webcim">
+      </p>
+
+      <p>
+        <label for="kereso">type="search"</label>
+        <input type="search" id="kereso">
+      </p>
+
+      <p>
+        <label for="szin">valassz szint</label>
+        <input type="color" id="szin">
+      </p>
+
+      <p>
+        <label for="csik">range</label>
+        <input type="range" id="csik">
+      </p>
+
+      <p>
+        progress
+        <progress value="50" max="100">50%</progress>
+      </p>
+
+      <p>
+        <label for="datum">datum</label>
+        <input type="date" id="datum">
+      </p>
+
+      <p>
+        <label for="legordulo">select + option:</label>
+        <select id="legordulo">
+          <option disabled>valassz egyet</option>
+          <option>majom</option>
+          <option>csiga</option>
+          <option selected>banan</option>
+          <option>zsiraf</option>
+        </select>
+      </p>
+
+      <p>
+        <label for="textterulet">textarea</label>
+        <textarea id="textterulet">hello</textarea>
+      </p>
+
+      <p>
+        <input type="submit" value="nyomd meg">
+        <button type="submit">gomb</button>
+      </p>
+
+      <p>
+        <label for="ize">Kattintsd be a checkboxot</label>
+        <input type="checkbox" id="ize">
+      </p>
+
+      <p>
+        radio
+        <ul>
+          <li>
+            <label>
+              <input type="radio" name="ugyzanaz" value="ertek1">
+              radio gomb
+            </label>
+          </li>
+
+          <li>
+            <label>
+              <input type="radio" name="ugyzanaz" value="kulonbozo">
+              radio gomb
+            </label>
+          </li>
+        </ul>
+      </p>
+
+    </form>
+  </body>
+</html>

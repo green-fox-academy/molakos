@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style/style.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>My Wikipedia</title>
+  </head>
+  <body>
+    <div class="main-container">
+
+      <header class="main-header">
+
+        <nav class="user-menu">
+          <ul>
+            <li>Create account</li>
+            <li>Not logged in</li>
+            <li>Talk</li>
+            <li>Contributions</li>
+            <li>Log in</li>
+          </ul>
+        </nav>
+
+        <nav class="talk-menu">
+          <ul>
+            <li>Article</li>
+            <li>Talk</li>
+          </ul>
+        </nav>
+
+        <nav class="edit-menu">
+          <ul>
+            <li>Read</li>
+            <li>Edit</li>
+            <li>View history</li>
+          </ul>
+        </nav>
+
+        <form class="search">
+          <input type="search" class="search-field" placeholder="Search">
+          <div class="search-button"><a href="https://en.wikipedia.org/w/index.php?search" class="search-button-link" rel="https://en.wikipedia.org">Search</a></div>
+        </form>
+
+      </header>
+      <main class="main-content">
+        <h1>Create account</h1>
+        <form class="new-account">
+
+          <div class="new">
+            <p>
+              <label for="name">Username</label>
+            </p>
+            <p>
+              <input type="text" required id="name" placeholder="Enter your username">
+            </p>
+          </div>
+
+          <div class="new">
+            <p>
+              <label for="password">Password</label>
+            </p>
+            <p>
+              <input type="password" id="password" placeholder="Enter a password">
+            </p>
+          </div>
+
+          <div class="new">
+            <p>
+              <label for="confirm-password">Confirm password</label>
+            </p>
+            <p>
+              <input type="password" id="confirm-password" placeholder="Confirm password again">
+            </p>
+          </div>
+
+          <div class="new">
+            <p>
+              <label for="email">Email adress (optional)</label>
+            </p>
+            <p>
+              <input type="email" id="email" placeholder="Enter your email adress">
+            </p>
+          </div>
+
+          <div class="new">
+            <p>
+              <input type="submit" class="create-button" value="Create your account">
+            </p>
+          </div>
+
+        </form>
+
+      </main>
+      <footer class="main-footer">
+        footer
+      </footer>
+    </div>
+    <aside class="main-sidebar">
+      <a href="https://en.wikipedia.org/wiki/Main_Page" class="logo" rel="https://en.wikipedia.org">Wikipedia</a>
+    </aside>
+  </body>
+</html>
