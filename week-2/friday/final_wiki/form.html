@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style/style.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>My Wikipedia</title>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+  </head>
+  <body>
+    <div class="main-container">
+
+      <header class="main-header">
+
+        <nav class="user-menu">
+          <ul>
+            <li><a href="">Create account</a></li>
+            <li><span><img src="img/membericon.svg" alt="not logged in icon" />Not logged in</span></li>
+            <li><a href="">Talk</a></li>
+            <li><a href="">Contributions</a></li>
+            <li><a href="">Log in</a></li>
+          </ul>
+        </nav>
+
+        <nav class="talk-menu tab">
+          <ul>
+            <li class="active-tab"><a href="">Article</a></li>
+            <li><a href="">Talk</a></li>
+          </ul>
+        </nav>
+
+        <nav class="edit-menu tab">
+          <ul>
+            <li class="active-tab"><a href="">Read</a></li>
+            <li><a href="">Edit</a></li>
+            <li><a href="">View history</a></li>
+          </ul>
+        </nav>
+
+        <form class="search">
+          <input type="search" placeholder="Search">
+          <input type="submit" value="">
+        </form>
+
+      </header>
+
+      <main class="main-content">
+        <h1>Create account</h1>
+        <div class="new-account-form">
+          <form class="new-account">
+
+            <div class="new">
+              <p>
+                <label for="name">Username</label>
+              </p>
+              <p>
+                <input type="text" required id="name" placeholder="Enter your username">
+              </p>
+            </div>
+
+            <div class="new">
+              <p>
+                <label for="password">Password</label>
+              </p>
+              <p>
+                <input type="password" id="password" placeholder="Enter a password">
+              </p>
+            </div>
+
+            <div class="new">
+              <p>
+                <label for="confirm-password">Confirm password</label>
+              </p>
+              <p>
+                <input type="password" id="confirm-password" placeholder="Confirm password again">
+              </p>
+            </div>
+
+            <div class="new">
+              <p>
+                <label for="email">Email adress (optional)</label>
+              </p>
+              <p>
+                <input type="email" id="email" placeholder="Enter your email adress">
+              </p>
+            </div>
+
+            <div class="captcha">
+            <p>To edit this page, please enter the words that appear below in the box (more info):</p>
+            </div>
+
+            <p>CAPTCHA Security check</p>
+
+            <div class="g-recaptcha" data-sitekey="== Your site Key =="></div>
+
+            <div class="new">
+              <p>
+                <input type="submit" class="create-button" value="Create your account">
+              </p>
+            </div>
+          </div>
+        </form>
+        <div class="clear"></div>
+
+      </main>
+
+      <footer class="main-footer">
+        <div class="footer-policy">
+          <p>This page was last modified on 12 November 2015, at 01:10.</p>
+          <p>Text is available under the Creative Commons Attribution-ShareAlike License; additional terms may apply. By using this site, you agree to the Terms of Use and Privacy Policy. Wikipedia® is a registered trademark of the Wikimedia Foundation, Inc., a non-profit organization.</p>
+          <ul class="footer-places">
+            <li><a href="#">Privacy policy</a></li>
+            <li><a href="#">About Wikipedia</a></li>
+            <li><a href="#">Disclaimers</a></li>
+            <li><a href="#">Contact Wikipedia</a></li>
+            <li><a href="#">Developers</a></li>
+            <li><a href="#">Mobile view</a></li>
+          </ul>
+        </div>
+
+        <div class="medialink">
+          <a href="https://www.mediawiki.org/wiki/MediaWiki"><img src="img/mediawiki.png" alt="mediawiki logo"/></a>
+          <a href="https://wikimediafoundation.org/wiki/Home"><img src="img/wikimedia.png" alt="wikimedia logo"/></a>
+        </div>
+
+      </footer>
+    </div>
+    <aside class="main-sidebar">
+      <a href="#" class="logo" rel="https://en.wikipedia.org">Wikipedia</a>
+
+      <div class="sidebar-body">
+        <nav class="main-menu-bar">
+          <ul>
+            <li><a href="">Main page</a></li>
+            <li><a href="">Contents</a></li>
+            <li><a href="">Featured content</a></li>
+            <li><a href="">Current events</a></li>
+            <li><a href="">Random article</a></li>
+            <li><a href="">Donate to Wikipedia</a></li>
+            <li><a href="">Wikipedia store</a></li>
+          </ul>
+        </nav>
+
+        <nav class="menu-bar">
+          <img src="img/line.png" alt="" />
+          <h3>Interaction</h3>
+          <ul>
+            <li><a href="">Help</a></li>
+            <li><a href="">About Wikipedia</a></li>
+            <li><a href="">Community portal</a></li>
+            <li><a href="">Recent changes</a></li>
+            <li><a href="">Contact page</a></li>
+          </ul>
+        </nav>
+
+        <nav class="menu-bar">
+          <img src="img/line.png" alt="" />
+          <h3>Tools</h3>
+          <ul>
+            <li><a href="">What links here</a></li>
+            <li><a href="">Related changes</a></li>
+            <li><a href="">Upload file</a></li>
+            <li><a href="">Special pages</a></li>
+            <li><a href="">Permanent link</a></li>
+            <li><a href="">Page information</a></li>
+            <li><a href="">Wikidata item</a></li>
+            <li><a href="">Cite this page</a></li>
+          </ul>
+        </nav>
+
+        <nav class="menu-bar">
+          <img src="img/line.png" alt="" />
+          <h3>Print/export</h3>
+          <ul>
+            <li><a href="">Create a book</a></li>
+            <li><a href="">Download as PDF</a></li>
+            <li><a href="">Printable version</a></li>
+          </ul>
+        </nav>
+
+        <nav class="menu-bar">
+          <img src="img/line.png" alt="" />
+          <h3>Languages</h3>
+          
+          <h3>Edit links</h3>
+        </nav>
+
+      </div>
+    </aside>
+  </body>
+</html>
