@@ -8,11 +8,18 @@ def test(expected, actual, message):
         print('Error: ' + message)
         print(expected, actual)
 
+tokens = {
+'5': 'V',
+'4': 'IV',
+'1': 'I'
+}
+
 def arabic2roman(arabic):
-    if arabic == 5:
-        return 'V'
-    if arabic == 4:
-        return 'IV'
+    wgile
+    if arabic == 6:
+        return 'VI'
+    if arabic == 5 or arabic == 4:
+        return tokens[str(arabic)]
     return 'I' * arabic
 
 test(arabic2roman(0), '', 'It should handle 0')
