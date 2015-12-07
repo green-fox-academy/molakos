@@ -1,46 +1,46 @@
+import commands
+import sys
+
 def menu ():
-   print("1. add ")
-   print("2. list")
-   print("3. delete")
-   print("4. exit")
-   choosen = int(input("choose-option "))
-   return choosen
-def add_new_item(input_item):
-   new_item = input("Add a new item: ")
-   text = open(input_item, "a")
-   text.write(new_item + "\n")
-   text.close()
+    print("\033c")
+    print('*********************************************************')
+    print(' * * * *                                         * * * * ')
+    print('* * *                1 List items                   * * *')
+    print(' * *                 2 Add a new item                * * ')
+    print('*                    3 Remove an item                   *')
+    print(' * *                 4 Complete an item              * * ')
+    print('* * *                5 Exit program                 * * *')
+    print(' * * * *                                         * * * * ')
+    print('*********************************************************')
 
-def list_items(input_item):
-   text = open(input_item, "r")
-   y = text.readlines()
-   text.close()
-   i = 1
-   for line in y:
-       print(i, line)
-       i += 1
+    choosen = input("Choose an option: ")
 
-def list_delete(input_item):
-   text = open(input_item, "r")
-   z = text.readlines()
-   text.close()
-   i = 1
-   for line in z:
-       print(i, line)
-       i += 1
-   a = int(input("choose deleting part"))
-   del z[a-1]
-   text = open(input_item, "w")
-   for line in z:
-       text.write(line)
-   text.close()
+    if choosen == '1':
+        print()
+        print("\033c")
+        commands.list_items(csv_input)
+        input('For main menu hit enter ')
+        menu()
+    elif choosen == '2':
+        commands.add_new()
+        commands.list_items(csv_input)
+        input('For main menu hit enter ')
+        menu()
+    elif choosen == '3':
+        commands.remove_item()
+        print()
+        commands.list_items(csv_input)
+        input('For main menu hit enter ')
+        menu()
+    elif choosen == '4':
+        commands.list_items(csv_input)
+        commands.make_complete()
+        commands.list_items(csv_input) #???!
+        commands.list_items(csv_complete)
+        input('For main menu hit enter ')
+        menu()
+    elif choosen.upper() == 'Q':
+        pass
 
-x = -1
-while x != 4:
-   x = menu ()
-   if x == 1:
-       add_new_item("to-do-list.txt")
-   elif x == 2:
-       list_items("to-do-list.txt")
-   elif x == 3:
-       list_delete("to-do-list.txt")
+
+menu()
