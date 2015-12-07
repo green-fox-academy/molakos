@@ -18,25 +18,25 @@ def menu ():
     if choosen == '1':
         print()
         print("\033c")
-        commands.list_items(csv_input)
+        commands.list_todo()
         input('For main menu hit enter ')
         menu()
     elif choosen == '2':
         commands.add_new()
-        commands.list_items(csv_input)
+        commands.list_todo()
         input('For main menu hit enter ')
         menu()
     elif choosen == '3':
         commands.remove_item()
         print()
-        commands.list_items(csv_input)
+        commands.list_todo()
         input('For main menu hit enter ')
         menu()
     elif choosen == '4':
-        commands.list_items(csv_input)
+        commands.list_todo()
         commands.make_complete()
-        commands.list_items(csv_input) #???!
-        commands.list_items(csv_complete)
+        commands.list_todo() #???!
+        commands.list_todo()
         input('For main menu hit enter ')
         menu()
     elif choosen.upper() == 'Q':

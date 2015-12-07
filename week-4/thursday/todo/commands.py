@@ -4,6 +4,7 @@ import time
 from datetime import datetime
 from colors import red, green, yellow
 todo_file = 'todo.csv'
+csv_complete = 'complete.csv'
 
 def list_todo():
     input_todo = open(todo_file, 'r')
@@ -19,7 +20,6 @@ def list_todo():
 def add_new():
     with open(todo_file, "a") as csvfile:
         todo_csv = csv.writer(csvfile, delimiter = "|", lineterminator="\n")
-        status = 'active'
         priority = input('Choose a priority: H - High, M - Medium, L - Low: ').upper()
         if priority == 'H':
             priority_mod = "  High   "
@@ -30,9 +30,9 @@ def add_new():
         else:
             priority_mod = " Medium  "
         description = input('Give the description: ')
-        deadline = int(input('Please give the deadline (in the following format: 20140602): '))
+        deadline = (input('Please give the deadline (in the following format: 20140602): '))
         date = datetime.now().strftime('%d/%m/%Y %H:%M')
-        data = [priority_mod, description, status, deadline, date]
+        data = [priority_mod, description, deadline, date]
         todo_csv.writerow(data)
 
 def remove_item():
@@ -56,34 +56,34 @@ def remove_item():
     else:
         print('')
 
-    def make_complete():
-        my_todo = open(csv_input, "r")
-        lines = list(csv.reader(my_todo, delimiter = "|"))
-        rm = int(input('Which one is complete? '))
-        temp_list = list(lines)
+def make_complete():
+    my_todo = open(todo_file, "r")
+    lines = list(csv.reader(my_todo, delimiter = "|"))
+    rm = int(input('Which one is complete? '))
+    temp_list = list(lines)
 
-        print() #empty line
-        print('Are you sure? Y/N:')
-        print(temp_list[rm-1])
-        yes = input('')
+    print() #empty line
+    print('Are you sure? Y/N:')
+    print(temp_list[rm-1])
+    yes = input('')
 
-        if yes == 'y':
-            # add item to the comlete list csv
-            with open(csv_complete, "a") as csvfile:
-                lines = csv.writer(csvfile, delimiter = "|")
-                lines.writerow(temp_list[rm-1])
+    if yes == 'y':
+        # add item to the comlete list csv
+        with open(csv_complete, "a") as csvfile:
+            lines = csv.writer(csvfile, delimiter = "|", lineterminator="\n")
+            lines.writerow(temp_list[rm-1])
 
-            temp_list.remove(temp_list[rm-1])
-            with open(csv_input, "w") as csvfile:
-                lines = csv.writer(csvfile, delimiter = "|")
+        temp_list.remove(temp_list[rm-1])
+        with open(todo_file, "w") as csvfile:
+            lines = csv.writer(csvfile, delimiter = "|", lineterminator="\n")
 
-                for line in temp_list:
-                    lines.writerow(line)
+            for line in temp_list:
+                lines.writerow(line)
 
-                print("\033c") #screen clr
-                print('Todo is completed')
+            print("\033c") #screen clr
+            print('Todo is completed')
 
-        elif yes == 'n':
-            print('Abort')
-        else:
-            print('')
+    elif yes == 'n':
+        print('Abort')
+    else:
+        print('')
