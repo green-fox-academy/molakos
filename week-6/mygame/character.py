@@ -10,8 +10,18 @@ class Character():
         self.luck = luck
         self.inventory = ['Leather Armor', 'Sword']
 
-    def character_status(self):
-        return self.name, self.health, self.dexterity, self.luck, self.inventory
+    def __repr__(self):
+        return '{} {}'.format(self.name, self.health, self.dexterity, self.luck)
+
+    def print_character_status(self):
+        stats = [('Name: ' + self.name),
+                  ('Health: ' + str(self.health) + '/' + str(self.max_healt)),
+                  ('Dexterity: ' + str(self.dexterity)),
+                  ('Luck: ' + str(self.luck) + '/' + str(self.max_luck)),
+                  ('Inventory: ' + str(self.inventory))]
+        for stat in stats:
+            print(stat)
+
 
     def create_new_character(self):
         user_input = input('Please give a name for your character: ')
@@ -43,8 +53,8 @@ class Character():
         self.inventory.append(potions[number-1])
         return self.inventory
 
-class Enemy(Character):
-    super().__init__(health, dexterity)
-    
+#class Enemy(Character):
 
+
+enemy1 = Character('bela', 8, 6)
 new_player = Character()

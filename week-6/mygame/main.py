@@ -95,12 +95,22 @@ after_potpick_menu = Menu([
     MenuItem(4, 'Quit', quit_game)
                         ])
 
+def begin_the_game():
+    print('\nTest your Sword in a test fight!\n')
+    new_player.character_status()
+    main(test_fight_menu)
+
 begin_new_game_menu = Menu([
-    MenuItem(1, 'Begin', None),
+    MenuItem(1, 'Begin', begin_the_game),
     MenuItem(2, 'Save', None),
     MenuItem(3, 'Quit', quit_game)
                             ])
 
+test_fight_menu =Menu([
+    MenuItem(1, 'Strike', None),
+    MenuItem(2, 'Retreat', None),
+    MenuItem(3, 'Quit', quit_game)
+                    ])
 
 def main(selected_menu):
     selected_menu.show_menu()
