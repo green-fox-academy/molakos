@@ -1,12 +1,17 @@
 from random import randint
 
 class Character():
-    def __init__(self, name = None, health = 0, dexterity = 0, luck = 0, potion = None):
+    def __init__(self, name = None, health = 0, dexterity = 0, luck = 0):
         self.name = name
+        self.max_healt = health
         self.health = health
         self.dexterity = dexterity
+        self.max_luck = luck
         self.luck = luck
-        self.potion = potion
+        self.inventory = ['Leather Armor', 'Sword']
+
+    def character_status(self):
+        return self.name, self.health, self.dexterity, self.luck, self.inventory
 
     def create_new_character(self):
         user_input = input('Please give a name for your character: ')
@@ -20,6 +25,7 @@ class Character():
 
     def set_health(self):
         self.health = randint(2, 12)+12
+        self.max_healt = self.health
         return self.health
 
     def set_dexterity(self):
@@ -28,17 +34,17 @@ class Character():
 
     def set_luck(self):
         self.luck =  randint(1, 6)+6
+        self.max_luck = self.luck
         return self.luck
 
-    def set_potion(self):
-        potions = ['Health potion', 'Dexterity potion', 'Luck potion']
-        for potion in enumerate(potions):
-            print(potion)
-        print('Health potion: Set your health back to the base value.')
-        print('Dexterity potion: Set your dexterity back to the base value.')
-        print('Luck potion: Set your luck back to the base value plus add one more.', '\n')
-        pick_the_potion = int(input('Please choose a potion! You can only pick one at the time!'))
-        self.potion = potions[pick_the_potion]
-        return self.potion
+    def set_potion(self, number):
+        potions = ['Potion of Health', 'Potion of Dexterity', 'Potion of Luck']
+        #number = int(input('\nPlease choose a potion! You can only pick one at the time!'))
+        self.inventory.append(potions[number-1])
+        return self.inventory
+
+class Enemy(Character):
+    super().__init__(health, dexterity)
+    
 
 new_player = Character()

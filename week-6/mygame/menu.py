@@ -5,7 +5,7 @@ class Menu():
         self.items = items
 
     def show_menu(self):
-        print('\n','*'*20, '\n')
+        print('*'*20, '\n')
         for item in self.items:
             print(item, '\n')
         print('*'*20)
@@ -13,7 +13,10 @@ class Menu():
     def execute_menu_item(self, number):
         for item in self.items:
             if item.num == number:
-                return item.action()
+                if item.optional:
+                    return item.action(item.optional)
+                else:
+                    return item.action()
 
     def check_if_valid(self, number):
         for item in self.items:
