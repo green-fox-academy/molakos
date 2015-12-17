@@ -9,6 +9,7 @@ class Character():
         self.max_luck = luck
         self.luck = luck
         self.inventory = ['Leather Armor', 'Sword']
+        self.dmg_done = 0
 
     def __repr__(self):
         return '{} {}'.format(self.name, self.health, self.dexterity, self.luck)
@@ -53,8 +54,64 @@ class Character():
         self.inventory.append(potions[number-1])
         return self.inventory
 
-#class Enemy(Character):
+    def cast_dice(self):
+        random_roll = randint(1, 6)
+        return random_roll
+
+    def strike_dmg_counter(self):
+        strike_dmg = self.dexterity + self.cast_dice() + self.cast_dice()
+        return strike_dmg
+
+    def strike(self, opponent):
+        player_strike = self.strike_dmg_counter()
+        print('\nYour power: ', player_strike)
+        opponent_strike = opponent.strike_dmg_counter()
+        print('\nEnemy power: ', opponent_strike, '\n')
+        if player_strike == opponent_strike:
+            print('Parry!')
+            strike(opponent)
+        elif player_strike > opponent_strike:
+            self.dmg_done = 2
+            print('You hit the enemy.\n')
+        else:
+            print('Enemy hit you.\n')
+            opponent.dmg_done = 2
+
+    def after_strike(self, opponent):
+        if self.dmg_done > opponent.dmg_done:
+            opponent.health -= self.dmg_done
+            self.dmg_done = 0
+        else:
+            self.health -= opponent.dmg_done
+            opponent.dmg_done = 0
+
+    def try_luck(self, opponent):
+        luck_count = self.cast_dice() + self.cast_dice()
+        if self.dmg_done > opponent.dmg_done:
+            if luck_count < self.luck:
+                opponent.health -= self.dmg_done + 2
+            else:
+                opponent.health -= self.dmg_done - 1
+            self.dmg_done = 0
+        else:
+            if luck_count < self.luck:
+                self.health -= opponent.dmg_done - 1
+            else:
+                self.health -= opponent.dmg_done + 1
+            opponent.dmg_done = 0
+        self.luck -= 1
+
+class Enemy(Character):
+    def __init__(self, name, health, dexterity):
+        super().__init__(name, health, dexterity)
+
+    def print_enemy_status(self):
+        stats = [('Name: ' + self.name),
+                 ('Health: ' + str(self.health) + '/' + str(self.max_healt)),
+                 ('Dexterity: ' + str(self.dexterity))]
+        for stat in stats:
+            print(stat)
 
 
-enemy1 = Character('bela', 8, 6)
+enemy1 = Enemy('bela', 8, 6)
 new_player = Character()

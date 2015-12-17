@@ -3,6 +3,8 @@ from menu_item import MenuItem
 from character import *
 from colors import red, green, yellow, cyan
 
+def clear_screen():
+    print('\033c')
 
 def start_game():
     new_player.create_new_character()
@@ -40,6 +42,7 @@ def save_game():
     pass
 
 def quit_game():
+    clear_screen()
     main(menu_list)
 
 newgame_menu = Menu([
@@ -53,6 +56,7 @@ def reroll_stats():
     continue_game()
 
 def continue_game_after_roll():
+    clear_screen()
     print('\nPlease select a potion. Choose wisely!')
     print('\nPotion of Health: Set your health back to the base value.')
     print('\nPotion of Dexterity: Set your dexterity back to the base value.')
@@ -97,8 +101,11 @@ after_potpick_menu = Menu([
 
 def begin_the_game():
     print('\nTest your Sword in a test fight!\n')
-    new_player.character_status()
-    main(test_fight_menu)
+    new_player.print_character_status()
+    print('\nYour enemy\'s stat: \n')
+    enemy1.print_enemy_status()
+    print('\n')
+    main(fight_menu)
 
 begin_new_game_menu = Menu([
     MenuItem(1, 'Begin', begin_the_game),
@@ -106,11 +113,40 @@ begin_new_game_menu = Menu([
     MenuItem(3, 'Quit', quit_game)
                             ])
 
-test_fight_menu =Menu([
-    MenuItem(1, 'Strike', None),
+def strike_option():
+    new_player.strike(enemy1)
+    main(after_strike_menu)
+
+fight_menu =Menu([
+    MenuItem(1, 'Strike', strike_option),
     MenuItem(2, 'Retreat', None),
     MenuItem(3, 'Quit', quit_game)
                     ])
+
+def after_strike_option():
+    new_player.after_strike(enemy1)
+    print('\nYour stat: \n')
+    new_player.print_character_status()
+    print('\nYour enemy\'s stat: \n')
+    enemy1.print_enemy_status()
+    print('\n')
+    main(fight_menu)
+
+def try_your_luck_option():
+    new_player.try_luck(enemy1)
+    print('\nYour stat: \n')
+    new_player.print_character_status()
+    print('\nYour enemy\'s stat: \n')
+    enemy1.print_enemy_status()
+    print('\n')
+    main(fight_menu)
+
+after_strike_menu = Menu([
+    MenuItem(1, 'Continue', after_strike_option),
+    MenuItem(2, 'Try your luck', try_your_luck_option),
+    MenuItem(3, 'Retreat', None),
+    MenuItem(4, 'Quit', quit_game)
+                        ])
 
 def main(selected_menu):
     selected_menu.show_menu()
@@ -123,8 +159,8 @@ def main(selected_menu):
             raise ValueError
 
     except ValueError:
-        print('\033c')
+        clear_screen()
         print('Make sure you pressed the right button. Else I\'m going to break your arm. Try again.')
 
-print('\033c')
+clear_screen()
 main(menu_list)
