@@ -23,7 +23,6 @@ class Character():
         for stat in stats:
             print(stat)
 
-
     def create_new_character(self):
         user_input = input('Please give a name for your character: ')
         self.name = user_input
@@ -100,6 +99,7 @@ class Character():
                 self.health -= opponent.dmg_done + 1
             opponent.dmg_done = 0
         self.luck -= 1
+
 
 class Enemy(Character):
     def __init__(self, name, health, dexterity):

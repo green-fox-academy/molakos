@@ -1,6 +1,7 @@
 from menu import Menu
 from menu_item import MenuItem
 from character import *
+from storage import *
 from colors import red, green, yellow, cyan
 
 def clear_screen():
@@ -15,9 +16,15 @@ def load_game():
     print('kolbaszt toltse')
 
 def exit_game():
-    user_input = input('Are you sure to quit? ')
+    user_input = input('Are you sure to quit? y/n ')
     if user_input.lower() == 'y':
         pass
+    elif user_input.lower() == 'n':
+        main(menu_list)
+    else:
+        print('Should I lend you glasses?! Come on, try again..')
+        main(menu_list)
+
 
 menu_list = Menu([
     MenuItem(1, 'New game', start_game),
@@ -38,17 +45,69 @@ def continue_game():
     print('\n', red('Health: '), new_player.health, '| ', cyan('Dexterity: '), new_player.dexterity, '| ', yellow('Luck: '), new_player.luck, '\n')
     main(reroll_menu)
 
-def save_game():
-    pass
+def save_game_option():
+    main(save_menu)
+
+def add_new_save():
+    filename_in = input('Please name your file: ')
+    save_new_item(filename_in)
+
+
+def list_json_files():
+    json = []
+    for file in os.listdir():
+        if file.endswith('.json'):
+            json.append(file)
+    return json
+
+def print_saved_items():
+    for files in list_json_files():
+        print('___',files,'___')
+
+def create_dictionary_for_save(self):
+    saved_dictionary = {
+                        'name': self.name,
+                        'health': self.health,
+                        'max-health': self.max_healt,
+                        'dexterity': self.dexterity,
+                        'luck': self.luck,
+                        'max-luck': self.max_luck,
+                        'inventory': self.inventory
+                        }
+    return saved_dictionary
+
+def save_new_item(name):
+    filename = open(name + '.json', 'w')
+    json.dump(new_player.create_dictionary_for_save(), filename)
+    filename.close()
+
+def load_saved_item():
+    filename_in = input('Please type the name of your file, without .json: ')
+    filename = open(filename_in + '.json' 'r')
+    loaded = json.load(filename)
+    new_player.name = loaded['name']
+    new_player.health = loaded['health']
+    new_player.max_healt = loaded['max-health']
+    new_player.dexterity = loaded['dexterity']
+    new_player.luck = loaded['luck']
+    new_player.max_luck = loaded['max-luck']
+    new_player.inventory = loaded['inventory']
+    filename.close()
 
 def quit_game():
     clear_screen()
     main(menu_list)
 
+save_menu = Menu([
+    MenuItem(1, 'Add new item', add_new_save),
+    MenuItem(2, 'Resume', None),
+    MenuItem(3, 'Quit', quit_game)
+                ])
+
 newgame_menu = Menu([
     MenuItem(1, 'Re-enter name', re_enter_name),
     MenuItem(2, 'Continue', continue_game),
-    MenuItem(3, 'Save', save_game),
+    MenuItem(3, 'Save', save_game_option),
     MenuItem(4, 'Quit', quit_game)
                  ])
 
@@ -92,8 +151,12 @@ def begin_new_game():
     print('\nYour inventory contains: ', new_player.inventory, '\n')
     main(begin_new_game_menu)
 
+def repick_potion():
+    del new_player.inventory[-1]
+    main(potion_menu)
+
 after_potpick_menu = Menu([
-    MenuItem(1, 'Repick potion', continue_game_after_roll),
+    MenuItem(1, 'Repick potion', repick_potion),
     MenuItem(2, 'Continue', begin_new_game),
     MenuItem(3, 'Save', None),
     MenuItem(4, 'Quit', quit_game)
@@ -149,18 +212,20 @@ after_strike_menu = Menu([
                         ])
 
 def main(selected_menu):
-    selected_menu.show_menu()
-    user_input = int(input('Please choose an option: '))
-    chosen = selected_menu.check_if_valid(user_input)
-    try:
-        if chosen == True:
-            selected_menu.execute_menu_item(user_input)
-        else:
-            raise ValueError
+    while True:
+        selected_menu.show_menu()
+        user_input = int(input('Please choose an option: '))
+        chosen = selected_menu.check_if_valid(user_input)
+        try:
+            if chosen == True:
+                selected_menu.execute_menu_item(user_input)
+                break
+            else:
+                raise ValueError
 
-    except ValueError:
-        clear_screen()
-        print('Make sure you pressed the right button. Else I\'m going to break your arm. Try again.')
+        except ValueError:
+            print('Make sure you pressed the right button. Else I\'m going to break your arm. Try again.')
+
 
 clear_screen()
 main(menu_list)
