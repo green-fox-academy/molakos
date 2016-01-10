@@ -20,44 +20,59 @@ var prev = document.querySelector('.prev');
 var next = document.querySelector('.next');
 var currentPicture = document.querySelector('.currentPicture');
 var pictureIndex = 0;
-
 var thumbnails = document.querySelector('.thumbnails');
+currentPicture.setAttribute('src', images[pictureIndex]);
 
-function addPicturesToThumbnail(src) {
-  var listedPicture = document.createElement('img');
-  listedPicture.setAttribute('src', src);
-  listedPicture.setAttribute('id', i)
-  thumbnails.appendChild(listedPicture);
+
+function pickPictureByClick(event) {
+  inactivatePicture();
+  pictureIndex = event.target.id;
+  changePicture(images[pictureIndex]);
+  document.getElementById(event.target.id).classList.add('actual');
 }
 
-for (var i = 1; i < images.length; i++ ) {
-  addPicturesToThumbnail(images[i]);
+function addPicturesToThumbnail() {
+  for (var i = 0; i < images.length; i++ ) {
+    var listedPicture = document.createElement('img');
+    listedPicture.addEventListener('click', pickPictureByClick);
+    listedPicture.setAttribute('src', images[i]);
+    listedPicture.setAttribute('id', i);
+    thumbnails.appendChild(listedPicture);
+  }
+}
+
+function inactivatePicture() {
+  document.querySelector('.actual').classList.remove('actual');
+}
+
+function activatePicture(pictureIndex) {
+  document.getElementById(pictureIndex).classList.add('actual');
 }
 
 function changePicture(src) {
   currentPicture.setAttribute('src', src);
-  // console.log(document.getElementsByClassName('id' + pictureIndex));
-
 }
 
-
-
 function pickNextPicture() {
+  inactivatePicture();
   if (pictureIndex === images.length - 1) {
     pictureIndex = 0;
   } else {
     pictureIndex++;
   }
-    changePicture(images[pictureIndex]);
+  changePicture(images[pictureIndex]);
+  activatePicture(pictureIndex);
 }
 
 function pickPrevPicture() {
+  inactivatePicture();
   if (pictureIndex === 0) {
     pictureIndex = images.length - 1;
   } else {
     pictureIndex--;
   }
   changePicture(images[pictureIndex]);
+  activatePicture(pictureIndex);
 }
 
 prev.addEventListener('click', function() {
@@ -68,8 +83,4 @@ next.addEventListener('click', function() {
   pickNextPicture();
 });
 
-thumbnails.addEventListener('click', function(event) {
-  document.querySelector('.actual').classList.remove('actual');
-  event.target.classList.add('actual')
-  changePicture(event.target.getAttribute('src'));
-})
+addPicturesToThumbnail();
