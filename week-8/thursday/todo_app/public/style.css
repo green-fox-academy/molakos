@@ -17,6 +17,7 @@ footer {
   background-color: #27408B;
   height: 80px;
   opacity: .70;
+  font-size: 40px;
 }
 
 h1 {
@@ -27,7 +28,7 @@ h1 {
 
 p {
   margin: 0;
-  padding: 0px;
+  padding: 10px;
   font-size: 27px;
 }
 
@@ -44,6 +45,16 @@ li {
   font-size: 22px;
 }
 
+textarea {
+  margin: 20px;
+  box-sizing: border-box;
+  height: 32.375px;
+  width: 250px;
+  padding: 4.2px 4.2px 4.2px 8.4px;
+  border-radius: 2px;
+  border: 1px solid #cccccc;
+}
+
 li:nth-child(1) {
   border-top: 1px solid #8DB6CD;
 }
@@ -52,9 +63,13 @@ li:nth-child(3) {
   border-bottom: 1px solid #8DB6CD;
 }
 
-li:hover, .login-button:hover, .sign-in-button:hover {
+li:hover, .login-button:hover, .sign-in-button:hover, .send-button:hover {
   background-color: #8DB6CD;
   color: #27408B;
+}
+
+.user-button {
+  padding:0;
 }
 
 .middleone {
@@ -70,11 +85,13 @@ li:hover, .login-button:hover, .sign-in-button:hover {
   opacity: .70;
   order: 1;
   background: linear-gradient(to top, #8DB6CD, #27408B);
-  height: 100vh;
+  /*height: 1000vh;*/
+  height: inherit;
   width: 400px;
   text-align: center;
   /*opacity: .15;*/
   border-right: 1px solid black;
+  padding-bottom: 57vh;
 }
 
 .user-interface {
@@ -101,7 +118,7 @@ li:hover, .login-button:hover, .sign-in-button:hover {
   width: 100%;
 }
 
-.todocontainer {
+.todo-container {
   display: block;
   position: relative;
   width: auto;
@@ -117,4 +134,26 @@ li:hover, .login-button:hover, .sign-in-button:hover {
   background-color: #EEE9E9;
   margin: 25px;
   box-shadow: 4px 3px 0px #8DB6CD, 9px 8px 8px rgba(0, 0, 0, 0.45);
+}
+
+.send-button {
+  width: 40%;
+  height: 40px;
+  border: 1px solid #8DB6CD;
+  margin: 10px;
+  margin-left: 150px;
+  right: 0;
+}
+
+.send-button p {
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.active {
+  background-color: #8DB6CD;
+  color: #27408B;
 }
