@@ -1,0 +1,159 @@
+body {
+  margin: 0;
+  background-image: url('binding_light.png');
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #8DB6CD;
+}
+
+header{
+  height: 80px;
+  background: linear-gradient(to bottom, #ADD8E6 60%, #EEE9E9 100%);
+  text-align: right;
+  border-bottom: 1px solid #EEE9E9;
+  opacity: .50;
+}
+
+footer {
+  background-color: #27408B;
+  height: 80px;
+  opacity: .70;
+  font-size: 40px;
+}
+
+h1 {
+  margin: 0;
+  padding: 20px;
+  font-size: 40px;
+}
+
+p {
+  margin: 0;
+  padding: 10px;
+  font-size: 27px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding-bottom: 15px;
+  padding-top: 15px;
+  width: 100%;
+  font-size: 22px;
+}
+
+textarea {
+  margin: 20px;
+  box-sizing: border-box;
+  height: 32.375px;
+  width: 250px;
+  padding: 4.2px 4.2px 4.2px 8.4px;
+  border-radius: 2px;
+  border: 1px solid #cccccc;
+}
+
+li:nth-child(1) {
+  border-top: 1px solid #8DB6CD;
+}
+
+li:nth-child(3) {
+  border-bottom: 1px solid #8DB6CD;
+}
+
+li:hover, .login-button:hover, .sign-in-button:hover, .send-button:hover {
+  background-color: #8DB6CD;
+  color: #27408B;
+}
+
+.user-button {
+  padding:0;
+}
+
+.middleone {
+  border-top: 1px solid #8DB6CD;
+  border-bottom: 1px solid #8DB6CD;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.sidebar {
+  opacity: .70;
+  order: 1;
+  background: linear-gradient(to top, #8DB6CD, #27408B);
+  /*height: 1000vh;*/
+  height: inherit;
+  width: 400px;
+  text-align: center;
+  /*opacity: .15;*/
+  border-right: 1px solid black;
+  padding-bottom: 57vh;
+}
+
+.user-interface {
+  align-items: center;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.login-button, .sign-in-button{
+  width: 40%;
+  height: 40px;
+  border: 1px solid #8DB6CD;
+  text-align: center;
+}
+
+.main-container {
+  /*display: flex;*/
+  opacity: .80;
+  order: 2;
+  background-color: white;
+  width: 100%;
+}
+
+.todo-container {
+  display: block;
+  position: relative;
+  width: auto;
+  height: 100%;
+}
+
+.todo-box {
+  opacity: 5000;
+  float: left;
+  border-radius: 60px;
+  width: 300px;
+  height: 300px;
+  background-color: #EEE9E9;
+  margin: 25px;
+  box-shadow: 4px 3px 0px #8DB6CD, 9px 8px 8px rgba(0, 0, 0, 0.45);
+}
+
+.send-button {
+  width: 40%;
+  height: 40px;
+  border: 1px solid #8DB6CD;
+  margin: 10px;
+  margin-left: 150px;
+  right: 0;
+}
+
+.send-button p {
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.active {
+  background-color: #8DB6CD;
+  color: #27408B;
+}

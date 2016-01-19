@@ -1,6 +1,6 @@
 'use strict';
 
-var url = 'https://mysterious-dusk-8248.herokuapp.com/todos';
+var url = 'http://localhost:3000/todos';
 var todoContainer = document.querySelector('.todo-container');
 
 
@@ -63,7 +63,6 @@ function addClassToDOM(DOMName, className) {
 function removeClassFromDOM(DOMName, className) {
   DOMName.classList.remove(className);
 }
-
 
 listTodoItemsButton.addEventListener('click', function() {
   removeClassFromDOM(deleteTodoButton, 'active');
