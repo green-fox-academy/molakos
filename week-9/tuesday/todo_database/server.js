@@ -8,9 +8,9 @@ var items = require("./items.js");
 
 var app = express();
 
-items.add({text: 'Buy milk'});
-items.add({text: 'Make dinner'});
-items.add({text: 'Save the world'});
+// items.add({text: 'Buy milk'});
+// items.add({text: 'Make dinner'});
+// items.add({text: 'Save the world'});
 
 
 app.use(logRequest);

@@ -29,9 +29,12 @@ function nextId() {
 
 var items = {};
 
-function getItem(id) {
-  return items[id];
-}
+// function getItem(id) {
+//   connection.query('SELECT todo FROM todo', function(err, result) {
+//     if (err) throw err;
+//     cb(result);
+//   });
+// }
 
 function addItem(attributes) {
   // var sql = "INSERT INTO todo SET text= 'hello', status= 'new'";
@@ -41,8 +44,10 @@ function addItem(attributes) {
   });
 }
 
-function removeItem(id) {
-  delete items[id];
+function removeItem(attributes) {
+  connection.query('DELETE FROM todo WHERE ?', attributes, function(err, result) {
+    if (err) throw err;
+  });
 }
 
 function allItems(cb) {
@@ -53,7 +58,7 @@ function allItems(cb) {
 }
 
 module.exports = {
-  get: getItem,
+  // get: getItem,
   add: addItem,
   remove: removeItem,
   all: allItems,

@@ -11,6 +11,9 @@ var listCallback = function(response) {
     newTodoItem.setAttribute('id', todoItem.id);
     newTodoItem.classList.add('todo-box');
     todoContainer.appendChild(newTodoItem);
+
+    newTodoItem.addEventListener('click', deleteItemFromTodoList)
+    
     var newTodoTextBox = document.querySelector('todo-box');
     var newTodoText = document.createElement('p');
     newTodoText.innerText = todoItem.text;
@@ -32,21 +35,16 @@ var createTodoCallback = function(response) {
   refresh();
 }
 
-function deleteItemFromServer(id, callback) {
+function deleteItemFromServer(id) {
   var req = new XMLHttpRequest();
   req.open('DELETE', url + '/' + id);
+  req.setRequestHeader('Content-Type', 'application/json');
   req.send();
-  req.onreadystatechange = function() {
-    if (req.readyState === 4) {
-      var response = JSON.parse(req.response);
-      return callback(response.id)
-    }
-  }
 }
 
 function deleteItemFromTodoList(id) {
-  var deleteItem = document.getElementById(id);
-  deleteItem.remove();
+  deleteItemFromServer(event.target.id);
+  refresh();
 }
 
 
@@ -55,6 +53,7 @@ var addnewTodoButton = document.querySelector('.add-new-todo-button');
 var deleteTodoButton = document.querySelector('.delete-todo-button');
 var textInput = document.querySelector('textarea');
 var createButton = document.querySelector('.send-button');
+
 
 function addClassToDOM(DOMName, className) {
   DOMName.classList.add(className);
