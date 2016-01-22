@@ -29,14 +29,15 @@ function nextId() {
 
 var items = {};
 
-function getItem(id) {
-  connection.query('SELECT id, text, status FROM todo WHERE id=?', id, function(err, result) {
+function getItem(id, callback) {
+  connection.query('SELECT id, text, completed FROM todo WHERE id=?', id, function(err, result) {
     if (err) throw err;
+    var item = result[0];
+    callback(item);
   });
 }
 
 function addItem(attributes) {
-  // var sql = "INSERT INTO todo SET text= 'hello', status= 'new'";
   connection.query('INSERT INTO todo SET ?', attributes, function(err, result) {
     if (err) throw err;
     console.log(result.insertId);
@@ -49,16 +50,23 @@ function removeItem(id) {
   });
 }
 
-function allItems(cb) {
+function allItems(callback) {
   connection.query('SELECT * FROM todo', function(err, result) {
     if (err) throw err;
-    cb(result);
+    callback(result);
+  });
+}
+
+function updateItem(id) {
+  connection.query("UPDATE todo SET completed='true' WHERE id=?", id, function(err, result) {
+    if (err) throw err;
   });
 }
 
 module.exports = {
-  get: getItem,
+  getItem: getItem,
   add: addItem,
   remove: removeItem,
   all: allItems,
+  update: updateItem
 };

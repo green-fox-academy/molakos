@@ -11,23 +11,20 @@ var listCallback = function(response) {
     newTodoItem.setAttribute('id', todoItem.id);
     newTodoItem.classList.add('todo-box');
     todoContainer.appendChild(newTodoItem);
-
-    newTodoItem.addEventListener('click', deleteItemFromTodoList)
-
     var newTodoTextBox = document.querySelector('todo-box');
     var newTodoText = document.createElement('p');
     newTodoText.innerText = todoItem.text;
-    newTodoItem.appendChild(newTodoText);
-
+    newTodoItem.appendChild(newTodoText)
+    newTodoItem.addEventListener('dblclick', deleteItemFromTodoList);
   });
 }
 
-function deleteForRefreshInHTML() {
+function refreshInHtml() {
   todoContainer.innerHTML= '';
 }
 
 var refresh = function() {
-  deleteForRefreshInHTML();
+  refreshInHtml();
   createRequest('GET', url, {}, listCallback);
 }
 
@@ -35,17 +32,15 @@ var createTodoCallback = function(response) {
   refresh();
 }
 
-function deleteItemFromServer(id) {
+function createDeleteRequest(id) {
   var req = new XMLHttpRequest();
   req.open('DELETE', url + '/' + id);
-  //req.setRequestHeader('Content-Type', 'application/json');
   req.send();
 }
 
 function deleteItemFromTodoList(id) {
-  deleteItemFromServer(event.target.id);
+  createDeleteRequest(event.target.id);
   refresh();
-  // refresh();
 }
 
 
@@ -78,12 +73,12 @@ addnewTodoButton.addEventListener('click', function() {
   refresh();
 });
 
-deleteTodoButton.addEventListener('click', function() {
-  refresh();
-  addClassToDOM(deleteTodoButton, 'active');
-  addClassToDOM(textInput, 'hidden');
-  addClassToDOM(createButton, 'hidden');
-});
+// deleteTodoButton.addEventListener('click', function() {
+//   var selectedItems = document.querySelectorAll('selected');
+//   selectedItems.forEach(function(item) {
+//     deleteItemFromTodoList();
+//   });
+// });
 
 createButton.addEventListener('click', function() {
   var newTodo = JSON.stringify({text: textInput.value});

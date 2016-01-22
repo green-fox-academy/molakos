@@ -157,3 +157,8 @@ li:hover, .login-button:hover, .sign-in-button:hover, .send-button:hover {
   background-color: #8DB6CD;
   color: #27408B;
 }
+
+.selected {
+  background-color: yellow;
+  box-shadow: 4px 3px 0px yellow, 9px 8px 8px rgba(0, 0, 0, 0.45);
+}

@@ -32,9 +32,17 @@ app.post("/todos", function (req, res) {
 
 
 app.get("/todos/:id", function (req, res) {
-  findItem(req, res, function (item) {
-    res.json(item);
+  var id = parseInt(req.params.id);
+  items.getItem(id, function(item) {
+    res.status(200).json(item);
   });
+});
+
+
+app.delete("/todos/:id", function (req, res) {
+  items.remove(req.params.id);
+  item.destroyed = true;
+  res.status(200).send('OK');
 });
 
 
@@ -44,15 +52,6 @@ app.put("/todos/:id", function (req, res) {
     res.json(item);
   });
 });
-
-
-app.delete("/todos/:id", function (req, res) {
-    items.remove(req.params.id);
-    console.log(req.params.id);
-    item.destroyed = true;
-    res.status(200).send('OK');
-});
-
 
 app.listen(3000, function () {
   console.log("Listening on port 3000...")
