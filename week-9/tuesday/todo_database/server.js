@@ -32,7 +32,9 @@ app.post("/todos", function (req, res) {
 
 
 app.get("/todos/:id", function (req, res) {
-  findItem(req, res, function (item) { res.json(item); });
+  findItem(req, res, function (item) {
+    res.json(item);
+  });
 });
 
 
@@ -45,11 +47,10 @@ app.put("/todos/:id", function (req, res) {
 
 
 app.delete("/todos/:id", function (req, res) {
-  findItem(req, res, function (item) {
-    items.remove(item.id);
+    items.remove(req.params.id);
+    console.log(req.params.id);
     item.destroyed = true;
-    res.json(item);
-  });
+    res.status(200).send('OK');
 });
 
 
@@ -58,7 +59,7 @@ app.listen(3000, function () {
 });
 
 function findItem(req, res, found) {
-  var id = parseInt(req.params.id);
+  var id = req.params.id;
   var item = items.get(id);
   if (item) {
     found(item);

@@ -13,7 +13,7 @@ var listCallback = function(response) {
     todoContainer.appendChild(newTodoItem);
 
     newTodoItem.addEventListener('click', deleteItemFromTodoList)
-    
+
     var newTodoTextBox = document.querySelector('todo-box');
     var newTodoText = document.createElement('p');
     newTodoText.innerText = todoItem.text;
@@ -38,13 +38,14 @@ var createTodoCallback = function(response) {
 function deleteItemFromServer(id) {
   var req = new XMLHttpRequest();
   req.open('DELETE', url + '/' + id);
-  req.setRequestHeader('Content-Type', 'application/json');
+  //req.setRequestHeader('Content-Type', 'application/json');
   req.send();
 }
 
 function deleteItemFromTodoList(id) {
   deleteItemFromServer(event.target.id);
   refresh();
+  // refresh();
 }
 
 
